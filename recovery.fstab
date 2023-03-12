@@ -1,6 +1,11 @@
 /system                   ext4     system                                           flags=display=system;logical;slotselect
 /vendor                   ext4     vendor                                           flags=display=vendor;logical;slotselect
 /product                  ext4     product                                          flags=display=product;logical;slotselect
+
+/system                   emmc     system                                           flags=display=system;logical;slotselect;backup=1;flashimg
+/vendor                   emmc     vendor                                           flags=display=vendor;logical;slotselect;backup=1;flashimg
+/product                  emmc     product                                          flags=display=product;logical;slotselect;backup=1;flashimg
+
 /vendor_dlkm              ext4     vendor_dlkm                                      flags=display=vendor_dlkm;logical;slotselect
 /odm_dlkm                 ext4     odm_dlkm                                         flags=display=odm_dlkm;logical;slotselect
 /metadata                 ext4     /dev/block/by-name/metadata                      flags=display=metadata
@@ -45,7 +50,7 @@ auto                      vfat     /devices/platform/soc/mt_usb*                
 /vcp                      emmc     /dev/block/by-name/vcp                           flags=display=vcp
 /gpueb                    emmc     /dev/block/by-name/gpueb                         flags=display=gpueb
 /mcf_ota                  emmc     /dev/block/by-name/mcf_ota                       flags=display=mcf_ota
-/vendor_boot              emmc     /dev/block/by-name/vendor_boot                   flags=display=vendor_boot
+/vendor_boot              emmc     /dev/block/by-name/vendor_boot                   flags=display=vendor_boot;backup=1;flashimg
 /mvpu_algo1               emmc     /dev/block/by-name/mvpu_algo1                    flags=display=mvpu_algo1
 /mvpu_algo2               emmc     /dev/block/by-name/mvpu_algo2                    flags=display=mvpu_algo2
 /apusys1                  emmc     /dev/block/by-name/apusys1                       flags=display=apusys1
@@ -54,6 +59,10 @@ auto                      vfat     /devices/platform/soc/mt_usb*                
 /pi_img                   emmc     /dev/block/by-name/pi_img                        flags=display=pi_img
 /boot_para                emmc     /dev/block/by-name/boot_para                     flags=display=boot_para
 /odmdtbo                  emmc     /dev/block/by-name/odmdtbo                       flags=display=odmdtbo
-/dtbo                     emmc     /dev/block/by-name/dtbo                          flags=display=dtbo
+/dtbo                     emmc     /dev/block/by-name/dtbo                          flags=display=dtbo;backup=1;flashimg
 /otp                      emmc     /dev/block/by-name/otp                           flags=display=otp
 /vbmeta                   emmc     /dev/block/by-name/vbmeta                        flags=display=vbmeta
+
+#Removable Storage
+/external_sd              vfat     /dev/block/mmcblk1p1     /dev/block/mmcblk1      flags=storage;wipeingui;removable
+/usb-otg                  auto     /dev/block/sda1          /dev/block/sda          flags=display="USB-OTG";storage;wipeingui;removable
